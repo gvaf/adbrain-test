@@ -9,7 +9,7 @@ class TruncateSpec extends FlatSpec
         }
     }  
 
-    it should "return the same number if the function is called with a signle digit" in {
+    it should "return the same number if the function is called with a single digit" in {
         for(i <- 0 to 9)
         {
             assert(leftTruncate(i) == List(i))
