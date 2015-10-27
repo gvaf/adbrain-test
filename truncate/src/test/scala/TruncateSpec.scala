@@ -1,7 +1,7 @@
 import org.scalatest._
 import com.adbrain.TruncateNumber.Truncate._
 
-class TruncateSpec extends FlatSpec 
+class TruncateSpec extends FlatSpec with Matchers
 { 
     it should "throw IllegalArgumentException if the function is called with a negative number" in {
         intercept[IllegalArgumentException] {
@@ -17,26 +17,26 @@ class TruncateSpec extends FlatSpec
     }
 
     it should "work for the maximum integer value" in {
-        leftTruncate(Int.MaxValue) must containAllOf(List(2147483647, 147483647, 47483647, 7483647, 483647, 83647, 3647, 647, 47, 7))
+        leftTruncate(Int.MaxValue) shouldEqual List(2147483647, 147483647, 47483647, 7483647, 483647, 83647, 3647, 647, 47, 7)
     }
 
     it should "work for numbers with multiple zeroes" in {
-        leftTruncate(10000) must containAllOf(List(10000, 0, 0, 0, 0))
+        leftTruncate(10000) shouldEqual List(10000, 0, 0, 0, 0)
     }
 
     it should "return the List(1234, 234, 34, 4) if the function is called with the value 1234" in {
-        leftTruncate(1234) must containAllOf(List(1234, 234, 34, 4))
+        leftTruncate(1234) shouldEqual List(1234, 234, 34, 4)
     }
 
     it should "return the List(4321, 321, 21, 1) if the function is called with the value 4321" in {
-        leftTruncate(4321) must containAllOf(List(4321, 321, 21, 1))
+        leftTruncate(4321) shouldEqual List(4321, 321, 21, 1)
     }
 
     it should "return the List(2015, 15, 15, 5) if the function is called with the value 2015" in {
-        leftTruncate(2015) must containAllOf(List(2015, 15, 15, 5))
+        leftTruncate(2015) shouldEqual List(2015, 15, 15, 5)
     }
 
     it should "return the List(13, 3) if the function is called with the value 13" in {
-        leftTruncate(13) must containAllOf(List(13, 3))
+        leftTruncate(13) shouldEqual List(13, 3)
     }    
 }
