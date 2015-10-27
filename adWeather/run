@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+spark-submit \
+  --class "AdWeather" \
+  --master local[4] \
+  target/scala-2.10/AdWeather.jar
+
